@@ -1,0 +1,128 @@
+.home{
+  background-image: url("../../assets/images/fuori.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.home mat-card{
+  top: 20%;
+  left: 5%;
+  float: left;
+  height: 430px;
+  width: 260px;
+  background-color: rgba(0, 0, 0, 0.726);
+}
+
+#camere{
+  background-image: url("../../assets/images/receptionCampanello.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  overflow: auto;
+}
+
+.info{
+  background-image: url("../../assets/images/info.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+mat-grid-list{
+  padding-top: 150px;
+  overflow: hidden;
+}
+
+mat-card{
+  background-color: rgba(0, 0, 0, 0.548);
+}
+
+.info mat-card{
+  top: 120px;
+  right: 100px;
+  float: right;
+  height: 470px;
+  width: 340px;
+  background-color: rgba(0, 0, 0, 0.726);
+}
+
+.info li{
+  display: inline-block;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.info p{
+  font-size: 20px;
+}
+
+.material-icons{
+  vertical-align: -6px;
+  padding-right: 10px;
+}
+
+.info ul{
+  text-align: center;
+}
+
+[hidden]{
+  display: none;
+}
+
+a:link, a:hover, a:visited{
+  text-decoration: none;
+}
+
+a:link, a:visited{
+  color: white;
+}
+
+*{transition:all 0.2s ease-in-out;}
+
+.container{
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  width: 100%;
+  position: fixed;
+  height: 96px;
+  clear:both;
+  overflow: hidden;
+  background-color: rgb(27, 27, 27);
+}
+
+nav{
+  float:right;
+  padding-right: 10px;
+}
+
+.logo img{
+  float:left;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+ul li{
+  display: inline-block;
+  padding:5px 10px;
+  font-size:15px;
+  font-family:raleway;
+  color:white;
+}
+
+ul a:hover{
+  color: #0f65e6;
+}
+
+button:hover{
+  color:black;
+}
+
+html{
+  scroll-behavior: smooth;
+}

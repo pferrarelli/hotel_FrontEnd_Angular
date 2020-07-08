@@ -1,0 +1,147 @@
+<!--Stepper-->
+<mat-horizontal-stepper linear #stepper>
+  <mat-step [stepControl]="emailFormGroup">
+    <form [formGroup]="emailFormGroup">
+      <ng-template matStepLabel>Email</ng-template>
+      <mat-form-field id="longInput2">
+        <mat-label>E-mail</mat-label>
+        <input matInput formControlName="email" placeholder="mail@example.com" required>
+        <mat-error *ngIf="emailFormGroup.controls.email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <button mat-button (click)="cercaCliente()">Verifica</button>
+      <br/>
+      <button [hidden]="clienteGiaPresente || !verificato" id="destra" mat-button matStepperNext>Avanti</button>
+
+      <h2 [hidden]="!clienteGiaPresente">E-mail già registrata.<br/>Vuoi creare un'altra prenotazione?</h2>
+      <br/>
+      <div id="bottoni" [hidden]="!clienteGiaPresente">
+        <div id="bottone">
+          <button mat-button (click)="stepper.reset(); unsetOptional()">Reset</button>
+        </div>
+        <div id="bottone">
+          <button mat-button matStepperNext (click)="setOptional()">Prosegui</button>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="primoFormGroup" [optional]="isOptional" *ngIf="!isOptional">
+    <form [formGroup]="primoFormGroup">
+      <ng-template matStepLabel>Dati<br/>cliente</ng-template>
+      <mat-form-field id="longInput">
+        <mat-label>Nome</mat-label>
+        <input maxlength="50" matInput formControlName="nome" required>
+      </mat-form-field>
+      <br/>
+      <mat-form-field id="longInput">
+        <mat-label>Cognome</mat-label>
+        <input maxlength="50" matInput formControlName="cognome" required>
+      </mat-form-field>
+      <br/>
+      <mat-form-field id="longInput">
+        <mat-label>Indirizzo</mat-label>
+        <input maxlength="40" matInput formControlName="indirizzo" placeholder="Es. Via Verdi, 12" required>
+      </mat-form-field>
+      <br/>
+      <mat-form-field id="longInput">
+        <mat-label>Cellulare</mat-label>
+        <input maxlength="10" matInput formControlName="cellulare" required>
+      </mat-form-field>
+      <div>
+        <button id="destra" mat-button matStepperNext (click)="creaCliente()">Avanti</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondoFormGroup">
+    <form [formGroup]="secondoFormGroup">
+      <ng-template matStepLabel>Periodo</ng-template>
+      <mat-form-field>
+        <mat-label>Check in</mat-label>
+        <input type="date" min="{{today | date:'yyyy-MM-dd'}}" matInput formControlName="checkIn">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Check out</mat-label>
+        <input type="date" min="{{minimum | date:'yyyy-MM-dd'}}" matInput formControlName="checkOut">
+      </mat-form-field>
+      <br/>
+      <mat-form-field id="longInput">
+        <mat-label>Servizio</mat-label>
+        <mat-select name="Servizio" formControlName="tipoServizio" required>
+          <mat-option value="BED">Nessuno</mat-option>
+          <mat-option value="BANDB">Bed&Breakfast</mat-option>
+          <mat-option value="MEZZAPENSIONE">Mezza Pensione</mat-option>
+          <mat-option value="PENSIONECOMPLETA">Pensione Completa</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button id="destra" mat-button matStepperNext [disabled]="secondoFormGroup.invalid" (click)="quantitaCamere(); prendiPrezzi()">Avanti</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="terzoFormGroup">
+    <form [formGroup]="terzoFormGroup">
+    <ng-template matStepLabel>Camere</ng-template>
+    <h2 style="padding-top: 30px; color: white;">Scegli le tue camere</h2>
+    <mat-form-field>
+      <mat-label>singole</mat-label>
+      <input type="number" matInput formControlName="singole" min="0" max={{nrSingole}} value="0">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>doppie</mat-label>
+      <input type="number" matInput formControlName="doppie" min="0" max={{nrDoppie}} value="0">
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+      <mat-label>matrimoniali</mat-label>
+      <input type="number" matInput formControlName="matrimoniali" min="0" max={{nrMatrimoniali}} value="0">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>triple</mat-label>
+      <input type="number" matInput formControlName="triple" min="0" max={{nrTriple}} value="0">
+    </mat-form-field>
+    <br/>
+    <div>
+      <button id="destra" [disabled]="terzoFormGroup.pristine" mat-button matStepperNext (click)="calcolaPrezzoGiornaliero(); prendiCliente()">Avanti</button>
+      <button id="sinistra" mat-button matStepperPrevious>Indietro</button>
+    </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Completa</ng-template>
+    <table [hidden]="!codiceMostrato" style="padding-left: 42%;text-align: center;">
+      <tr>
+        <h2 [hidden]="!codiceMostrato">Codice: {{codicePrenotazione}}</h2>
+      </tr>
+      <tr>
+      <button [hidden]="!codiceMostrato" mat-button routerLink="/">Torna alla Home page</button>
+      </tr>
+    </table>
+    <table style="padding-left: 42%;text-align: center;">
+      <tr>
+        <th style="width: fit-content;">
+          <h2 [hidden]="!mostraErrore">{{errore}}</h2>
+          <h1 [hidden]="tentataPrenotazione" style="color: white;">Vuoi procedere?</h1>
+        </th>
+      </tr>
+      <tr [hidden]="!prenotazioneRiuscita || nascondiSuccesso">
+        <h1 style="color: white;" [hidden]="!prenotazioneRiuscita || nascondiSuccesso">Prenotazione completata</h1>
+        <button [hidden]="!prenotazioneRiuscita || codiceMostrato" (click)="mostraCodice()" mat-button matStepperNext>Codice Prenotazione</button>
+      </tr>
+      <tr>
+      <mat-card [hidden]="tentataPrenotazione">
+        <mat-card-content>
+          <h1 [hidden]="tentataPrenotazione" style="padding-top: 10px;">Prezzo</h1>
+          <h2 [hidden]="tentataPrenotazione" style="padding-bottom: 10px;">Totale €{{prezzoTotale}}</h2>
+          <h2 [hidden]="tentataPrenotazione" style="padding-bottom: 10px;">€{{prezzoTotaleGiornaliero}} a notte</h2>
+        </mat-card-content>
+      </mat-card>
+      </tr>
+      <tr>
+        <td style="padding-top: 50px;">
+          <button [hidden]="tentataPrenotazione" (click)="prenota()"mat-button >Conferma prenotazione</button>
+        </td>
+      </tr>
+    </table>
+    <button [hidden]="!mostraErrore" mat-button matStepperPrevious (click)="annulla()">Indietro</button>
+  </mat-step>
+</mat-horizontal-stepper>
+<!--//Stepper-->

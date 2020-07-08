@@ -1,0 +1,74 @@
+<!--container-->
+<div class="container">
+  <!--logo-->
+  <div class="logo">
+    <a href="http://localhost:4200/#home"><img src="../assets/images/logoExpress.png"></a>
+  </div>
+  <!--//logo-->
+  <nav>
+    <ul>
+      <li><a href="http://localhost:4200/#home"><h3>HOME</h3></a></li>
+      <li><a href="http://localhost:4200/#camere"><h3>CAMERE</h3></a></li>
+      <li><a href="http://localhost:4200/#info"><h3>INFO</h3></a></li>
+      <li><a routerLink="/ricerca"><h3 [hidden]="isLoggedIn">RICERCA</h3></a></li>
+      <li><a routerLink="/prenotazione"><h3 [hidden]="isLoggedIn">PRENOTA</h3></a></li>
+      <li><a routerLink="/administrator/dashboard"><h3 [hidden]="!isLoggedIn">DASHBOARD</h3></a></li>
+      <li><button mat-stroked-button (click)='login()' [hidden]="isLoggedIn" style="background-color: #002d72; font-size: 18px; font-family: raleway;">LOGIN</button></li>
+      <li><button mat-stroked-button (click)='logout()' [hidden]="!isLoggedIn" style="background-color: #002d72; font-size: 18px; font-family: raleway;">LOGOUT</button></li>
+    </ul>
+  </nav>
+</div>
+<!--//container-->
+<!--bgHome-->
+<div id="home" class="home">
+  <mat-card>
+      <app-ricerca-home>
+      </app-ricerca-home>
+  </mat-card>
+
+</div>
+<!--//bgHome-->
+<!--bgCamere-->
+<div id="camere">
+  <mat-grid-list cols="2" rowHeight="3:1" gutterSize="50px">
+    <mat-grid-tile>
+      <mat-card >
+        <img src="../../assets/images/singola.jpg" width="230px" height="157px">
+        <mat-card-content><h3>CAMERA SINGOLA</h3></mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card >
+        <img src="../../assets/images/matrimoniale.jpg" width="230px" height="157px">
+        <mat-card-content><h3>CAMERA MATRIMONIALE</h3></mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card >
+        <img src="../../assets/images/doppia.jpg" width="230px" height="157px">
+        <mat-card-content><h3>CAMERA DOPPIA</h3></mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card >
+        <img src="../../assets/images/tripla.jpg" width="230px" height="157px">
+        <mat-card-content><h3>CAMERA TRIPLA / FAMILIARE</h3></mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<!--//bgCamere-->
+<!--bgInfo-->
+<div id="info" class="info">
+  <mat-card>
+    <mat-card-content>
+      <h1 style="text-align: center;">INFO</h1>
+      <li><p><i class="material-icons">email</i>hotelCasuale@gmail.com</p></li>
+      <li><p><i class="material-icons">phone</i>+39 - 0984 000000</p></li>
+      <li><p><i class="material-icons">location_on</i>Via Pietro Bucci, Arcavacata</p></li>
+      <li><h3>ACCETTIAMO LE SEGUENTI CARTE:</h3></li>
+      <li><img src="../../assets/images/carte.png" height="130px"></li>
+    </mat-card-content>
+  </mat-card>
+</div>
+<!--/bgInfo-->

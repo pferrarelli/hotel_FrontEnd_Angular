@@ -1,0 +1,34 @@
+<div id="principale">
+  <div class="secondario">
+    <button (click)="indietro()" [disabled]="pagina==0" mat-button style="float: left; left:10px">&lt;</button>
+    <button (click)="avanti()" [disabled]="pagina+1==pagTot" mat-button style="float: right; right: 10px;">&gt;</button>
+    <p style="color:white;">Page {{pagina+1}} of {{pagTot}}</p>
+  </div>
+  <table>
+    <tr>
+      <th>Codice</th>
+      <th>Cliente</th>
+      <th>Camere</th>
+      <th>Check in</th>
+    </tr>
+    <tr *ngFor="let p of prenotazioni">
+      <td>{{p.codicePrenotazione}}</td>
+      <td>{{p.cliente.nome}} {{p.cliente.cognome}}</td>
+      <td>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Visualizza</mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-selection-list [multiple]="false">
+              <mat-list-option *ngFor="let c of p.camere">
+                {{c.numero }}
+              </mat-list-option>
+            </mat-selection-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </td>
+      <td>{{p.checkin}}</td>
+    </tr>
+  </table>
+</div>

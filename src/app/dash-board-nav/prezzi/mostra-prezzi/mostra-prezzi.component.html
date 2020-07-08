@@ -1,0 +1,40 @@
+<div>
+<mat-card>
+  <mat-card-content style="text-align: center;">
+    <h1 style="font-size:3em">Prezzi</h1>
+    <table style="text-align: center; padding-bottom: 40px;">
+      <tr>
+        <td><h3>Singola</h3></td>
+        <td><h3>Matrimoniale</h3></td>
+        <td><h3>Doppia</h3></td>
+        <td><h3>Tripla</h3></td>
+      </tr>
+      <tr>
+        <td><img src="../../assets/images/singola.jpg" width="180px" height="110px"></td>
+        <td><img src="../../assets/images/matrimoniale.jpg" width="180px" height="110px"></td>
+        <td><img src="../../assets/images/doppia.jpg" width="180px" height="110px"></td>
+        <td><img src="../../assets/images/tripla.jpg" width="180px" height="110px"></td>
+      </tr>
+      <tr [formGroup]="prezziFormGroup">
+        <td><input type="number" matInput formControlName="singola" min="0" ></td>
+        <td><input type="number" matInput formControlName="matrimoniale" min="0" ></td>
+        <td><input type="number" matInput formControlName="doppia" min="0" ></td>
+        <td><input type="number" matInput formControlName="tripla" min="0" ></td>
+      </tr>
+    </table>
+    <table style="text-align: center; padding-bottom: 20px; padding-left:105px;">
+      <tr>
+        <td><h3>Bed&Breakfast</h3></td>
+        <td><h3>Mezza pensione</h3></td>
+        <td><h3>Pensione completa</h3></td>
+      </tr>
+      <tr [formGroup]="prezziFormGroup">
+        <td class="td_3"><input type="number" matInput formControlName="bandb"></td>
+        <td class="td_3"><input type="number" matInput formControlName="mezzaPensione"></td>
+        <td class="td_3"><input type="number" matInput formControlName="pensioneCompleta"></td>
+      </tr>
+    </table>
+    <button mat-button (click)="modificaPrezzi()">Modifica</button>
+  </mat-card-content>
+</mat-card>
+</div>

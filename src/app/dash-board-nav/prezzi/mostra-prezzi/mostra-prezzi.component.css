@@ -1,0 +1,37 @@
+div{
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  padding-top: 50px;
+  padding-left:10%;
+}
+
+mat-card{
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.548);
+  width: 78%;
+}
+
+th, td {
+  padding: 0px 15px;
+}
+
+button{
+  background-color: #043f99;
+  color: white;
+  text-align: center;
+}
+
+input{
+  background-color: rgba(255, 255, 255, 0.616);
+  color: black;
+}
+
+.td_3 {
+  width: 33%;
+}
+
+h1{
+  padding-bottom: 30px;
+}

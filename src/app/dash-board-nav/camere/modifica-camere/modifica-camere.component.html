@@ -1,0 +1,19 @@
+<div id="principale">
+  <div class="secondario">
+    <button (click)="indietro()" [disabled]="pagina==0" mat-button style="float: left; left:10px; background-color: #002d72; color: white;">&lt;</button>
+    <button (click)="avanti()" [disabled]="pagina+1==pagTot" mat-button style="float: right; right: 10px; background-color: #002d72; color: white;">&gt;</button>
+    <p style="color:white;">Page {{pagina+1}} of {{pagTot}}</p>
+  </div>
+  <table>
+    <tr>
+      <th>Numero</th>
+      <th>Tipo</th>
+      <th>Rimuovi</th>
+    </tr>
+    <tr *ngFor="let c of camere">
+      <td>{{c.numero}}</td>
+      <td>{{c.tipoCamera}}</td>
+      <td><button (click)="elimina(c)" mat-button style="color:white; background-color: rgb(155, 2, 2);">X</button></td>
+    </tr>
+  </table>
+</div>

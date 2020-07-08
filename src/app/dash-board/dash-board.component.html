@@ -1,0 +1,57 @@
+<!--container-->
+<div class="container">
+  <h1>Pannello di amministrazione</h1>
+  <!--logo-->
+  <div class="logo">
+    <a routerLink="/"><img src="../assets/images/logoExpress.png"></a>
+  </div>
+  <!--//logo-->
+</div>
+<!--//container-->
+<!--sidenav-->
+<mat-sidenav-container>
+  <mat-sidenav>Sidenav</mat-sidenav>
+  <mat-sidenav-content>
+    <!--listaDelNav-->
+    <mat-accordion>
+      <!--Prenotazioni-->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Prenotazioni</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-selection-list [multiple]="false">
+          <a routerLink="prenotazioni/list"><mat-list-option style="font-size: 14px;">Mostra</mat-list-option></a>
+          <a routerLink="prenotazioni/checkout"><mat-list-option style="font-size: 14px;">Check out</mat-list-option></a>
+        </mat-selection-list>
+      </mat-expansion-panel>
+      <!--/Prenotazioni-->
+      <!--Camere-->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Camere</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-selection-list [multiple]="false">
+          <a routerLink="camere/modifica"><mat-list-option style="font-size: 14px;">Mostra/Elimina</mat-list-option></a>
+          <a routerLink="camere/aggiungi"><mat-list-option style="font-size: 14px;">Aggiungi</mat-list-option></a>
+        </mat-selection-list>
+      </mat-expansion-panel>
+      <!--/Camere-->
+      <!--Prezzi-->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Prezzi</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-selection-list [multiple]="false">
+          <a routerLink="prezzi"><mat-list-option style="font-size: 14px;">Mostra/Modifica</mat-list-option></a>
+        </mat-selection-list>
+      </mat-expansion-panel>
+      <!--/Prezzi-->
+    </mat-accordion>
+    <!--//listaDelNav-->
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!--//sidenav-->
+<div class="spazioLaterale">
+  <router-outlet></router-outlet>
+</div>
+

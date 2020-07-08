@@ -1,0 +1,70 @@
+<!--container-->
+<div class="container">
+  <h1>Ricerca Prenotazione</h1>
+  <!--logo-->
+  <div class="logo">
+    <a routerLink="/"><img src="../assets/images/logoExpress.png"></a>
+  </div>
+  <!--//logo-->
+</div>
+<!--//container-->
+<div style="background-color: rgb(39, 36, 36);" id="full">
+<table [hidden]="trovato" style="padding-left: 33%;padding-top: 108px;">
+  <tr>
+    <th>
+      <h1>Inserisci il codice per <br/>cercare la tua prenotazione</h1>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <form [formGroup]="formUno">
+        <mat-form-field style="padding-right: 5px;">
+          <mat-label>Codice</mat-label>
+          <input matInput formControlName="cod" placeholder="Codice" required>
+        </mat-form-field>
+        <button style="background-color: #043f99;
+        color: white;
+        text-align: center;" (click)="cerca()" mat-button>Cerca</button>
+      </form>
+    </td>
+  </tr>
+</table>
+<div style="text-align: center; padding-left:0%; width: 75%; height: 100%;">
+  <h1 style="padding-top: 340px; padding-left: 42%;" [hidden]="!finito">{{messaggio}}</h1>
+<table [hidden]="!trovato || finito" style="padding-top: 70px; ">
+  <tr>
+    <th style="text-align: center;">
+      <h1 style="padding-left: 500px;">Prenotazione #{{codice}}</h1>
+    </th>
+  </tr>
+  <tr>
+    <td><h3>Check in</h3></td>
+    <td><h3>{{prenotazione.checkin}}</h3></td>
+  </tr>
+  <tr>
+    <td><h3>Check out</h3></td>
+    <td><h3>{{prenotazione.checkout}}</h3></td>
+  </tr>
+  <tr>
+    <td><h3>Cliente</h3></td>
+    <td><h3>{{prenotazione.cliente.nome}} {{prenotazione.cliente.cognome}}</h3></td>
+  </tr>
+  <tr>
+    <td><h3>Servizio</h3></td>
+    <td><h3>{{getServizio()}}</h3></td>
+  </tr>
+  <tr>
+    <td><h3>Qt&agrave; camere</h3></td>
+    <td><h3>{{prenotazione.camere.length}}</h3></td>
+  </tr>
+  <tr>
+    <td><h3>Prezzo</h3></td>
+    <td><h3>€ {{prenotazione.prezzoTotale}}</h3></td>
+  </tr>
+  <tr>
+    <td><h3>Vuoi eliminare la prenotazione?</h3></td>
+    <td><button [disabled]="dataSuperata" style="color:white; background-color: rgb(155, 2, 2);"mat-button (click)="eliminaPrenotazione()">Elimina</button></td>
+  </tr>
+</table>
+</div>
+</div>

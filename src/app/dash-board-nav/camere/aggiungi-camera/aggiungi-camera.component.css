@@ -1,0 +1,30 @@
+#principale{
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  overflow: scroll;
+  padding-top: 80px;
+  padding-left: 25%;
+}
+
+table {
+  width: 50%;
+  background-color: rgba(7, 7, 7, 0.411) ;
+  padding-bottom: 50px;
+}
+
+td{
+  padding-bottom: 15px;
+}
+
+#msg{
+  width: 80%;
+  height: 40px;
+  padding-left: 20%;
+  text-align: center;
+}
+
+#msginterno{
+  background-color: rgba(121, 121, 121, 0.158);
+  width: 80%;
+}

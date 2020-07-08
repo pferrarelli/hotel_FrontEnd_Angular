@@ -1,0 +1,51 @@
+.container{
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  width: 100%;
+  position: fixed;
+  height: 96px;
+  clear:both;
+  overflow: hidden;
+  background-color: rgb(27, 27, 27);
+}
+
+.logo img{
+  float:right;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+h1{
+  float: left;
+  color: whitesmoke;
+  padding-left: 30px;
+  padding-top: 10px;
+}
+
+mat-sidenav-container{
+  background-color: rgb(37, 37, 37);
+  padding-top: 96px;
+  float: left;
+  height: 100%;
+  width: 20%;
+}
+
+.spazioLaterale{
+  float: left;
+  background-color: rgb(194, 194, 194);
+  padding-top: 96px;
+  overflow: hidden;
+  width: 80%;
+  height: 85.6%;
+  text-align: center;
+}
+
+a:link, a:hover, a:visited{
+  text-decoration: none;
+}
+a:link, a:visited{
+  color: white;
+}
+*{transition:all 0.2s ease-in-out;}

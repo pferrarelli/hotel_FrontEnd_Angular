@@ -1,0 +1,52 @@
+*{transition:all 0.2s ease-in-out;}
+
+.container{
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  width: 100%;
+  position: fixed;
+  height: 96px;
+  clear:both;
+  overflow: hidden;
+  background-color: rgb(27, 27, 27);
+}
+
+.logo img{
+  float:right;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+#full{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+h1{
+  float: left;
+  color: whitesmoke;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+[hidden]{
+  display: none;
+}
+
+div{
+  text-align: center;
+}
+table{
+  text-align: center;
+}
+
+h3{
+  color:white;
+}
+
+table{
+  border-spacing: 0px 0px;
+}

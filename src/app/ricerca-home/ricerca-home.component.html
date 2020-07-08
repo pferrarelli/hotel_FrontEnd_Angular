@@ -1,0 +1,47 @@
+<mat-card-content>
+
+  <h1>CAMERE DISPONIBILI</h1>
+
+<form [formGroup]="ricercaForm" id="sposta">
+  <div>
+      <label>Data di arrivo</label>
+      <br>
+      <input type="date" min="{{today | date:'yyyy-MM-dd'}}" pattern="yyyy-MM-dd" formControlName="checkIn">
+  </div>
+  <br/>
+  <div>
+    <label>Data check-out</label>
+    <br>
+    <input type="date" min="{{minimum | date:'yyyy-MM-dd'}}" pattern="yyyy-MM-dd" formControlName="checkOut">
+  </div>
+  <br/>
+  <button type="button" (click)='cerca()' [disabled]="ricercaForm.pristine">Cerca</button>
+</form>
+<br/>
+<mat-grid-list cols="2" rowHeight="4:1" [hidden]="!clickato">
+  <mat-grid-tile>
+    <h4>Singole</h4>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <h4>Doppie</h4>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <h3>{{nrSingole}}</h3>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <h3>{{nrDoppie}}</h3>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <h4>Matrimoniali</h4>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <h4>Triple</h4>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <h3>{{nrMatrimoniali}}</h3>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <h3>{{nrTriple}}</h3>
+  </mat-grid-tile>
+</mat-grid-list>
+</mat-card-content>

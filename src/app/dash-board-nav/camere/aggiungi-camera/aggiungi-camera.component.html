@@ -1,0 +1,38 @@
+<div id="principale">
+  <table style="text-align: center;">
+    <tr style="text-align: center;"><th><h1>Aggiungi camera</h1></th></tr>
+    <tr>
+      <td>
+        <mat-form-field [formGroup]="myFormGroup">
+          <mat-label>Numero</mat-label>
+          <input type="number" maxlength="4" matInput formControlName="numero" required>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field [formGroup]="myFormGroup">
+          <mat-label>Tipo</mat-label>
+          <mat-select name="Tipo" formControlName="tipo" required>
+            <mat-option value="SINGOLA">Singola</mat-option>
+            <mat-option value="DOPPIA">Doppia</mat-option>
+            <mat-option value="MATRIMONIALE">Matrimoniale</mat-option>
+            <mat-option value="TRIPLA">Tripla</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td><button (click)="aggiungi()" [disabled]="myFormGroup.invalid" mat-button style="background-color: #002d72; color: white;">Aggiungi</button></td>
+    </tr>
+    <tr>
+      <td>
+        <div id="msg">
+          <div id="msginterno">
+            <h3>{{msg}}</h3>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
